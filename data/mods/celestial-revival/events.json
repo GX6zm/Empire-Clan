@@ -1,0 +1,97 @@
+{
+  "type": "events",
+  "defs": [
+    {
+      "id": "ev_marco",
+      "title": "卢沟桥事变",
+      "desc": "一名士兵在夜色里失踪。两个小时后，宛平城外响起了枪声。没有人知道那颗子弹是谁先开的——但所有人都知道，从这一刻起事情的性质变了。",
+      "flavor": "「退让换来的从来不是和平，只是下一次通牒。」",
+      "for": "CHN",
+      "once": true,
+      "trigger": { "op": "has_focus", "id": "CHN_army" },
+      "options": [
+        {
+          "text": "坚决抵抗",
+          "tooltip": "战争支持度大幅上升，稳定度受损",
+          "ai_weight": 3,
+          "effects": [
+            { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 12 } },
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -6 } },
+            { "op": "country_flag", "flag": "resist" },
+            { "op": "log", "text": "宛平城外的枪声，成了整个民族的动员令" }
+          ]
+        },
+        {
+          "text": "暂时退让",
+          "tooltip": "稳定度上升，战争支持度下降",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 6 } },
+            { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": -8 } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ev_industry",
+      "title": "工业产值翻番",
+      "desc": "统计处的报告放在桌上：全国工厂数已经翻过了十六座。有人欢呼，也有人问——这些东西什么时候能变成枪。",
+      "for": "CHN",
+      "once": true,
+      "trigger": {
+        "op": "cmp",
+        "cmp": "gte",
+        "lhs": { "op": "var", "path": "country.factories" },
+        "rhs": { "op": "num", "value": 16 }
+      },
+      "options": [
+        {
+          "text": "继续追加投资",
+          "tooltip": "工厂 +2，稳定度 -3",
+          "ai_weight": 2,
+          "effects": [
+            { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -3 } }
+          ]
+        },
+        {
+          "text": "先稳住民生",
+          "tooltip": "稳定度 +6",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 6 } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ev_jpn_pressure",
+      "title": "华北局势",
+      "desc": "参谋本部把一份新的作战计划送进会议室。地图上的箭头从朝鲜半岛一路画到华北平原。",
+      "for": "JPN",
+      "once": true,
+      "trigger": { "op": "date_after", "date": { "year": 1937, "month": 7, "day": 1 } },
+      "options": [
+        {
+          "text": "增兵华北",
+          "tooltip": "战争支持度 +8",
+          "ai_weight": 2,
+          "effects": [
+            { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 8 } },
+            { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 1 } }
+          ]
+        },
+        {
+          "text": "维持现状",
+          "tooltip": "稳定度 +4",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 4 } }
+          ]
+        }
+      ]
+    }
+  ]
+}

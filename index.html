@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>国策 · Focus Engine</title>
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <!-- 启动遮罩：加载 / 校验 / 报错都显示在这里 -->
+  <div id="boot">
+    <div class="boot-box">
+      <div class="boot-mark" aria-hidden="true">国</div>
+      <div class="boot-title">国策 · FOCUS ENGINE</div>
+      <div class="boot-rule" aria-hidden="true"></div>
+      <div class="boot-msg" id="boot-msg">正在加载游戏数据…</div>
+      <div class="boot-detail" id="boot-detail"></div>
+    </div>
+  </div>
+
+  <div id="app" hidden>
+    <!-- ── 顶部状态栏 ───────────────────────────────────── -->
+    <header id="topbar">
+      <div class="brand" title="国策 · Focus Engine">
+        <span class="brand-mark" aria-hidden="true">国</span>
+        <span class="brand-sub">FOCUS<br />ENGINE</span>
+      </div>
+
+      <div class="nation" id="nation">
+        <span class="nation-flag" id="nation-flag" aria-hidden="true"></span>
+        <span class="nation-text">
+          <span class="nation-name" id="nation-name">—</span>
+          <span class="nation-tag" id="nation-tag">—</span>
+        </span>
+      </div>
+
+      <div id="hud" class="hud" role="group" aria-label="国家状态"></div>
+      <div class="toolbar" id="toolbar"></div>
+    </header>
+
+    <!-- ── 主体：导航轨 + 工作区 ─────────────────────────── -->
+    <div id="layout">
+      <nav id="navbar" aria-label="主导航"></nav>
+
+      <div id="workspace">
+        <!-- 国策视图 -->
+        <section id="view-focus" class="view is-active" aria-label="国策树">
+          <div id="canvas" class="canvas">
+            <div id="viewport" class="viewport" tabindex="-1">
+              <div id="tree" class="tree"></div>
+            </div>
+
+            <div class="canvas-tools" id="canvas-tools">
+              <button class="tool-btn" data-zoom="out" title="缩小（-）" aria-label="缩小">−</button>
+              <span class="tool-zoom" id="zoom-label">100%</span>
+              <button class="tool-btn" data-zoom="in" title="放大（+）" aria-label="放大">+</button>
+              <button class="tool-btn" data-zoom="fit" title="适应画布（0）" aria-label="适应画布">适</button>
+            </div>
+
+            <div id="situation" class="situation">
+              <div class="sit-head">
+                <span class="idx">00</span>
+                <span class="sit-title">战略态势</span>
+                <span class="sit-btns">
+                  <button class="sit-toggle" id="sit-expand" title="展开大地图" aria-label="展开大地图">图</button>
+                  <button class="sit-toggle" id="sit-toggle" title="收起 / 展开" aria-expanded="true">收</button>
+                </span>
+              </div>
+              <div class="sit-map"><svg id="map" xmlns="http://www.w3.org/2000/svg"></svg></div>
+              <div id="situation-body" class="sit-body"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 其他视图：国家档案（政治 / 经济 / 外交 / 军事共用） -->
+        <section id="view-dossier" class="view" aria-label="国家档案" hidden>
+          <div id="dossier" class="dossier"></div>
+        </section>
+
+        <!-- 右侧详情面板 -->
+        <aside id="detail" class="detail" aria-label="国策详情" hidden></aside>
+      </div>
+    </div>
+
+    <!-- ── 底部事件 / 日志 ───────────────────────────────── -->
+    <footer id="logbar">
+      <div class="log-head">
+        <span class="idx">LOG</span>
+        <span class="log-title">事件与日志</span>
+        <span class="log-hint">空格 暂停　·　1-5 调速　·　点击区域查看所属国家</span>
+      </div>
+      <div id="log" class="log" role="log" aria-live="polite"></div>
+    </footer>
+  </div>
+
+  <div id="modal-root"></div>
+
+  <script type="module" src="src/main.js"></script>
+  <noscript>
+    <p style="color:#cdd5d0;padding:24px">本游戏需要启用 JavaScript。</p>
+  </noscript>
+</body>
+</html>

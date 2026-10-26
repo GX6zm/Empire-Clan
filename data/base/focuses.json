@@ -1,0 +1,423 @@
+{
+  "type": "focuses",
+  "defs": [
+    {
+      "id": "GER_root", "tag": "GER",
+      "name": "重建国防军",
+      "desc": "凡尔赛的枷锁必须砸碎。从今天起，国防军将重新成为这个国家真正的骨骼。",
+      "icon": "🎖",
+      "x": 4, "y": 0,
+      "cost": 35,
+      "effects": [
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 25 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 5 } },
+        { "op": "log", "text": "国防军重建计划正式启动" }
+      ],
+      "ai_weight": 20
+    },
+
+    {
+      "id": "GER_army", "tag": "GER",
+      "name": "陆军改革",
+      "desc": "把旧帝国的军官团与新技术结合起来。坦克、无线电、俯冲轰炸机——战争的形式正在改变。",
+      "icon": "⚔",
+      "x": 2, "y": 1,
+      "cost": 50,
+      "prereqs": ["GER_root"],
+      "mutually_exclusive": ["GER_navy"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 10 } },
+        { "op": "add", "target": "country.manpower", "value": { "op": "num", "value": 10 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 2 } },
+        { "op": "add_idea", "id": "army_reform" }
+      ],
+      "ai_weight": 12
+    },
+    {
+      "id": "GER_armor", "tag": "GER",
+      "name": "装甲兵种",
+      "desc": "古德里安的理论：把坦克集中使用，撕开一条口子，然后向纵深狂奔。",
+      "icon": "🛡",
+      "x": 0, "y": 2,
+      "cost": 60,
+      "prereqs": ["GER_army"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 5 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 1 } }
+      ],
+      "ai_weight": 10
+    },
+    {
+      "id": "GER_doctrine", "tag": "GER",
+      "name": "闪击战理论",
+      "desc": "胜利不来自消耗，而来自速度。敌人的动员尚未完成，战争就已经结束。",
+      "icon": "📜",
+      "x": 1, "y": 2,
+      "cost": 60,
+      "prereqs": ["GER_army"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 8 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -3 } },
+        { "op": "add_idea", "id": "blitz_doctrine" }
+      ],
+      "ai_weight": 11
+    },
+    {
+      "id": "GER_blitz", "tag": "GER",
+      "name": "闪击战",
+      "desc": "把理论变成条令，把条令变成演习，把演习变成习惯。",
+      "icon": "⚡",
+      "x": 1, "y": 3,
+      "cost": 70,
+      "prereqs": ["GER_doctrine"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 10 } },
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 1 } }
+      ],
+      "ai_weight": 10
+    },
+    {
+      "id": "GER_rearm_west", "tag": "GER",
+      "name": "西线重整",
+      "desc": "把目光转向莱茵河以西。那里有一条防线，也有一整个民族的旧梦。",
+      "icon": "🗺",
+      "x": 0, "y": 4,
+      "cost": 60,
+      "prereqs": ["GER_blitz"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 5 } },
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": -20 } },
+        { "op": "add_idea", "id": "GER_westwall" }
+      ],
+      "ai_weight": 7
+    },
+
+    {
+      "id": "GER_navy", "tag": "GER",
+      "name": "海军扩张",
+      "desc": "Z 计划。一支足以挑战皇家海军的水面舰队——这是昂贵的野心。",
+      "icon": "⚓",
+      "x": 6, "y": 1,
+      "cost": 50,
+      "prereqs": ["GER_root"],
+      "mutually_exclusive": ["GER_army"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": -10 } },
+        { "op": "add_idea", "id": "navy_z_plan" }
+      ],
+      "ai_weight": 6
+    },
+    {
+      "id": "GER_shipyard", "tag": "GER",
+      "name": "造船厂扩建",
+      "desc": "基尔、威廉港、汉堡——船台上排满了尚未下水的钢铁。",
+      "icon": "🔧",
+      "x": 6, "y": 2,
+      "cost": 55,
+      "prereqs": ["GER_navy"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } }
+      ],
+      "ai_weight": 8
+    },
+    {
+      "id": "GER_carrier", "tag": "GER",
+      "name": "航空母舰",
+      "desc": "齐柏林伯爵号。一个从未完工的梦，但它值得写在纸上。",
+      "icon": "🛩",
+      "x": 7, "y": 2,
+      "cost": 70,
+      "prereqs": ["GER_navy"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 1 } },
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 6 } }
+      ],
+      "ai_weight": 5
+    },
+    {
+      "id": "GER_naval_supremacy", "tag": "GER",
+      "name": "制海权",
+      "desc": "如果大西洋是英国人的内湖，那就造一支能把它变成战场的舰队。",
+      "icon": "🌊",
+      "x": 6, "y": 3,
+      "cost": 60,
+      "prereqs_any": ["GER_carrier", "GER_shipyard"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 5 } }
+      ],
+      "ai_weight": 6
+    },
+
+    {
+      "id": "GER_eco_plan", "tag": "GER",
+      "name": "四年计划",
+      "desc": "戈林的四年计划：让这个国家在四年内做好战争准备，无论代价是什么。国家把整个经济按战争需求重新编排——从这一刻起，政治开始为工业让路。",
+      "icon": "🏭",
+      "x": 4, "y": 1,
+      "cost": 50,
+      "prereqs": ["GER_root"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 3 } },
+        { "op": "add_idea", "id": "four_year_plan" },
+        { "op": "log", "text": "四年计划启动，经济开始向战争需求倾斜" }
+      ],
+      "ai_weight": 14
+    },
+
+    {
+      "id": "GER_eco_autarky", "tag": "GER",
+      "name": "原料自给",
+      "desc": "封锁吓不倒一个能自己生产一切的国家。合成橡胶、合成燃料、劣质铁矿——统统要。代价是国内从此进入配给制，而配给制会吃掉你的政治资本。",
+      "icon": "🧱",
+      "x": 3, "y": 2,
+      "cost": 60,
+      "prereqs": ["GER_eco_plan"],
+      "mutually_exclusive": ["GER_eco_trade"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 4 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -6 } },
+        { "op": "add_idea", "id": "autarky" }
+      ],
+      "ai_weight": 11
+    },
+    {
+      "id": "GER_eco_synfuel", "tag": "GER",
+      "name": "合成燃料",
+      "desc": "把煤变成汽油，每吨成本是进口的三倍。但当舰队加满油出海时，没人会问燃料是从哪来的。",
+      "icon": "⛽",
+      "x": 3, "y": 3,
+      "cost": 70,
+      "pp_cost": 50,
+      "prereqs": ["GER_eco_autarky"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 3 } },
+        { "op": "add", "target": "country.manpower", "value": { "op": "num", "value": -8 } },
+        { "op": "add_idea", "id": "synfuel" }
+      ],
+      "ai_weight": 10
+    },
+    {
+      "id": "GER_eco_synrubber", "tag": "GER",
+      "name": "合成橡胶",
+      "desc": "布纳橡胶工厂日夜不停。空气里有股洗不掉的化学味，工人们在里面待不过五年。这是自给路线真正的账单。",
+      "icon": "🧪",
+      "x": 3, "y": 4,
+      "cost": 70,
+      "prereqs": ["GER_eco_synfuel"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -5 } },
+        { "op": "add_idea", "id": "synrubber" }
+      ],
+      "ai_weight": 10
+    },
+
+    {
+      "id": "GER_eco_trade", "tag": "GER",
+      "name": "对外贸易",
+      "desc": "用马克、机床和军火换罗马尼亚的石油与瑞典的铁矿石。钱来得快，政治资本来得更快——但你的重工业始终比对手少长几寸。",
+      "icon": "💱",
+      "x": 5, "y": 2,
+      "cost": 60,
+      "prereqs": ["GER_eco_plan"],
+      "mutually_exclusive": ["GER_eco_autarky"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 1 } },
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 50 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 4 } },
+        { "op": "add_idea", "id": "open_market" }
+      ],
+      "ai_weight": 11
+    },
+    {
+      "id": "GER_eco_tradepact", "tag": "GER",
+      "name": "贸易协定",
+      "desc": "一叠用两种语言签字的文件。它不会让工厂变多，但会让这个国家看起来值得信赖——在国内，这恰恰是最稀缺的东西。",
+      "icon": "📄",
+      "x": 5, "y": 3,
+      "cost": 60,
+      "pp_cost": 40,
+      "prereqs": ["GER_eco_trade"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 30 } },
+        { "op": "add_idea", "id": "trade_pact" }
+      ],
+      "ai_weight": 10
+    },
+    {
+      "id": "GER_eco_market", "tag": "GER",
+      "name": "大陆市场",
+      "desc": "半个欧洲的经济都挂在这条贸易链上。只要不打仗，它就能一直转下去——而这正是问题：这条路线要求你保持和平，可你的整个战略都在准备战争。",
+      "icon": "🌍",
+      "x": 5, "y": 4,
+      "cost": 70,
+      "prereqs": ["GER_eco_tradepact"],
+      "available": { "op": "not", "arg": { "op": "at_war" } },
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -3 } },
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 5 } },
+        { "op": "add_idea", "id": "continental_market" }
+      ],
+      "ai_weight": 9
+    },
+
+    {
+      "id": "GER_eco_war", "tag": "GER",
+      "name": "战争经济",
+      "desc": "整个国民经济转入战时轨道。一切为了前线，一切为了胜利。到这里两条路线重新汇合，但你带着不同的国家精神回来。",
+      "icon": "🏗",
+      "x": 4, "y": 5,
+      "cost": 80,
+      "prereqs_any": ["GER_eco_synrubber", "GER_eco_market"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 5 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -8 } },
+        { "op": "add_idea", "id": "war_economy" }
+      ],
+      "ai_weight": 12
+    },
+    {
+      "id": "GER_eco_military", "tag": "GER",
+      "name": "军工优先",
+      "desc": "最好的钢、最好的工人、最好的工程师全部送进兵工厂。这一步要花掉大量政治资本——走自给路线的人，往往在这里卡住。",
+      "icon": "🔩",
+      "x": 4, "y": 6,
+      "cost": 80,
+      "pp_cost": 80,
+      "prereqs": ["GER_eco_war"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 3 } },
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 10 } },
+        { "op": "add", "target": "country.manpower", "value": { "op": "num", "value": -10 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 3 } },
+        { "op": "add_idea", "id": "military_priority" }
+      ],
+      "ai_weight": 10
+    },
+    {
+      "id": "GER_eco_total", "tag": "GER",
+      "name": "总体战",
+      "desc": "国家不再有后方。每一个工厂、每一个家庭、每一分钟都属于战争。这条路的终点不是胜利，只是「还能再打下去」。",
+      "icon": "🔥",
+      "x": 4, "y": 7,
+      "cost": 100,
+      "prereqs": ["GER_eco_military"],
+      "available": {
+        "op": "cmp",
+        "cmp": "gte",
+        "lhs": { "op": "var", "path": "country.factories" },
+        "rhs": { "op": "num", "value": 30 }
+      },
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 8 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -12 } },
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 12 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 4 } },
+        { "op": "add_idea", "id": "total_war" },
+        { "op": "declare_war", "tag": "SOV" },
+        { "op": "fire_event", "id": "ev_hegemony" }
+      ],
+      "ai_weight": 5
+    },
+
+    {
+      "id": "FRA_root", "tag": "FRA",
+      "name": "马奇诺防线",
+      "desc": "混凝土、钢铁与一种不愿再流血的决心。",
+      "icon": "🏰",
+      "x": 1, "y": 0,
+      "cost": 30,
+      "effects": [
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 8 } },
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 1 } }
+      ],
+      "ai_weight": 20
+    },
+    {
+      "id": "FRA_army", "tag": "FRA",
+      "name": "常备军扩充",
+      "desc": "把预备役填进要塞之间的空隙。",
+      "icon": "⚔",
+      "x": 0, "y": 1,
+      "cost": 45,
+      "prereqs": ["FRA_root"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 6 } },
+        { "op": "add", "target": "country.manpower", "value": { "op": "num", "value": 8 } }
+      ],
+      "ai_weight": 12
+    },
+    {
+      "id": "FRA_rearm", "tag": "FRA",
+      "name": "重整军备",
+      "desc": "工厂三班倒。这一次，法国不会措手不及。",
+      "icon": "🏭",
+      "x": 1, "y": 1,
+      "cost": 50,
+      "prereqs": ["FRA_root"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } }
+      ],
+      "ai_weight": 12
+    },
+    {
+      "id": "FRA_alliance", "tag": "FRA",
+      "name": "东方盟友",
+      "desc": "与莫斯科、布拉格、华沙编织一张包围网。",
+      "icon": "🤝",
+      "x": 2, "y": 1,
+      "cost": 50,
+      "prereqs": ["FRA_root"],
+      "effects": [
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 20 } }
+      ],
+      "ai_weight": 8
+    },
+
+    {
+      "id": "SOV_root", "tag": "SOV",
+      "name": "五年计划",
+      "desc": "钢铁、煤炭、拖拉机厂。把一个农业国硬生生拽进工业时代。",
+      "icon": "🏭",
+      "x": 1, "y": 0,
+      "cost": 30,
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 3 } }
+      ],
+      "ai_weight": 20
+    },
+    {
+      "id": "SOV_purge", "tag": "SOV",
+      "name": "大清洗",
+      "desc": "恐惧是一种统治技术，代价是军官团的整个上层。",
+      "icon": "🩸",
+      "x": 0, "y": 1,
+      "cost": 45,
+      "prereqs": ["SOV_root"],
+      "effects": [
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 30 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -10 } }
+      ],
+      "ai_weight": 9
+    },
+    {
+      "id": "SOV_urals", "tag": "SOV",
+      "name": "乌拉尔工业",
+      "desc": "把工厂建在敌人轰炸机够不到的地方。",
+      "icon": "⛰",
+      "x": 2, "y": 1,
+      "cost": 55,
+      "prereqs": ["SOV_root"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 4 } }
+      ],
+      "ai_weight": 13
+    }
+  ]
+}

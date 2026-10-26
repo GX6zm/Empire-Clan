@@ -1,0 +1,39 @@
+{
+  "type": "patch",
+  "ops": [
+    {
+      "action": "add",
+      "collection": "events",
+      "value": {
+        "id": "ev_shadow",
+        "title": "一封没有署名的信",
+        "manual": true,
+        "for": "GER",
+        "once": true,
+        "desc": "信使把信封放在桌上就走了。信封里只有一张纸，写着一个日期、一个地点，和一句话：「那一天，请让部队留在营房里。」",
+        "flavor": "（由「影子总参谋部」国策触发）",
+        "trigger": { "op": "always" },
+        "options": [
+          {
+            "text": "照办",
+            "tooltip": "稳定度 +8，政治点数 -10",
+            "ai_weight": 2,
+            "effects": [
+              { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 8 } },
+              { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": -10 } },
+              { "op": "country_flag", "flag": "shadow_deal" }
+            ]
+          },
+          {
+            "text": "烧掉它",
+            "tooltip": "战争支持度 +5",
+            "ai_weight": 1,
+            "effects": [
+              { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 5 } }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

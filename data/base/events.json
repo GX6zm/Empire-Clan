@@ -1,0 +1,155 @@
+{
+  "type": "events",
+  "defs": [
+    {
+      "id": "ev_rhineland",
+      "title": "莱茵兰再军事化",
+      "desc": "总参谋部把一份只有两页的计划放在桌上：三个营越过莱茵河，进入非军事区。如果法国人动真格，我们就得撤退——那将是一场灾难性的羞辱。",
+      "flavor": "「我们赌的不是军队，是对方的犹豫。」",
+      "for": "GER",
+      "once": true,
+      "trigger": { "op": "has_focus", "id": "GER_root" },
+      "options": [
+        {
+          "text": "冒险进军莱茵兰",
+          "tooltip": "战争支持度大幅上升，但稳定度受损",
+          "ai_weight": 3,
+          "effects": [
+            { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 10 } },
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -5 } },
+            { "op": "country_flag", "flag": "rhineland" },
+            { "op": "log", "text": "三个营越过莱茵河，未遭抵抗" }
+          ]
+        },
+        {
+          "text": "谨慎观望",
+          "tooltip": "稳定度小幅上升",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 5 } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ev_anschluss",
+      "title": "合并奥地利",
+      "desc": "维也纳的街道上挤满了挥舞旗帜的人群。一个德语国家，一位元首，一个帝国。",
+      "flavor": "「没有一枪一弹。」",
+      "for": "GER",
+      "once": true,
+      "trigger": { "op": "has_focus", "id": "GER_eco_plan" },
+      "options": [
+        {
+          "text": "和平合并",
+          "tooltip": "工厂与人力增加",
+          "ai_weight": 3,
+          "effects": [
+            { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+            { "op": "add", "target": "country.manpower", "value": { "op": "num", "value": 15 } },
+            { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 25 } }
+          ]
+        },
+        {
+          "text": "暂缓，先处理内部反对派",
+          "tooltip": "稳定度上升",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 8 } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ev_boom",
+      "title": "军工产能突破",
+      "desc": "统计局的报告放在桌上：全国工厂数已突破十八座。工业部长说，这只是开始。",
+      "for": "GER",
+      "once": true,
+      "trigger": {
+        "op": "cmp",
+        "cmp": "gte",
+        "lhs": { "op": "var", "path": "country.factories" },
+        "rhs": { "op": "num", "value": 18 }
+      },
+      "options": [
+        {
+          "text": "继续扩张",
+          "tooltip": "工厂 +2，稳定度 -3",
+          "ai_weight": 2,
+          "effects": [
+            { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -3 } }
+          ]
+        },
+        {
+          "text": "优先改善民生",
+          "tooltip": "稳定度 +6",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 6 } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ev_purge",
+      "title": "图哈切夫斯基案",
+      "desc": "一份来自国外的伪造文件，落进了一个偏执的人手里。红军最优秀的头脑正在被自己的国家处决。",
+      "for": "SOV",
+      "once": true,
+      "trigger": { "op": "date_after", "date": { "year": 1936, "month": 7, "day": 1 } },
+      "options": [
+        {
+          "text": "清洗军队",
+          "tooltip": "政治点数 +20，稳定度 -8",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 20 } },
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -8 } }
+          ]
+        },
+        {
+          "text": "不予理会",
+          "tooltip": "稳定度 +3",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 3 } }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "ev_hegemony",
+      "title": "大陆的新秩序",
+      "manual": true,
+      "desc": "从大西洋到乌拉尔，欧洲的地图被重新绘制。会议室里没有人说话，因为所有人都知道接下来会发生什么。",
+      "flavor": "「这不是结束，甚至不是结束的开始。」",
+      "for": "GER",
+      "once": true,
+      "trigger": { "op": "always" },
+      "options": [
+        {
+          "text": "继续向东",
+          "tooltip": "战争支持度 +15",
+          "ai_weight": 2,
+          "effects": [
+            { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 15 } }
+          ]
+        },
+        {
+          "text": "巩固现有版图",
+          "tooltip": "稳定度 +12",
+          "ai_weight": 1,
+          "effects": [
+            { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 12 } }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "imperial-twilight",
+  "name": "帝国余晖",
+  "version": "1.1.0",
+  "author": "示例作者",
+  "description": "演示 patch 机制：不替换整个国策，只改数值，并新增一条国策分支与一个专属事件。默认启用。",
+  "gameVersion": ">=0.1.0",
+  "loadAfter": [],
+  "files": ["focuses.patch.json", "events.patch.json"]
+}

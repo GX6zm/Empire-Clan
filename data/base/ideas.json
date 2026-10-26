@@ -1,0 +1,160 @@
+{
+  "type": "ideas",
+  "defs": [
+    {
+      "id": "four_year_plan",
+      "name": "四年计划",
+      "desc": "国家把整个经济按战争需求重新编排。短期看是效率，长期看是负担。",
+      "icon": "🏭",
+      "modifiers": {
+        "factory_output": 0.08,
+        "political_power_gain": -0.10
+      }
+    },
+    {
+      "id": "autarky",
+      "name": "自给自足",
+      "desc": "与世界市场脱钩。工厂不再受制于进口，但配给制让每个人的日子都更难过。",
+      "icon": "🧱",
+      "modifiers": {
+        "factory_output": 0.18,
+        "political_power_gain": -0.25
+      }
+    },
+    {
+      "id": "synfuel",
+      "name": "合成燃料",
+      "desc": "把煤变成汽油。每吨的成本是普通汽油的三倍，但至少不用看别人脸色。",
+      "icon": "⛽",
+      "modifiers": {
+        "factory_output": 0.12,
+        "war_support_drift": -0.15
+      }
+    },
+    {
+      "id": "synrubber",
+      "name": "合成橡胶",
+      "desc": "布纳橡胶工厂日夜不停。空气里有股洗不掉的化学味，工人们在里面待不过五年。",
+      "icon": "🧪",
+      "modifiers": {
+        "factory_output": 0.20,
+        "stability_drift": -0.35
+      }
+    },
+    {
+      "id": "open_market",
+      "name": "开放市场",
+      "desc": "用马克、机床和军火换资源。钱来得快，但本国的重工业始终长不快。",
+      "icon": "💱",
+      "modifiers": {
+        "political_power_gain": 0.45,
+        "factory_output": -0.12
+      }
+    },
+    {
+      "id": "trade_pact",
+      "name": "贸易协定",
+      "desc": "一叠用两种语言签字的文件。它不会让工厂变多，但会让这个国家看起来值得信赖。",
+      "icon": "📄",
+      "modifiers": {
+        "stability_drift": 0.25,
+        "political_power_gain": 0.20,
+        "factory_output": -0.05
+      }
+    },
+    {
+      "id": "continental_market",
+      "name": "大陆市场",
+      "desc": "半个欧洲的经济都挂在这条贸易链上。只要不打仗，它就能一直转下去——这正是问题所在。",
+      "icon": "🌍",
+      "modifiers": {
+        "political_power_gain": 0.50,
+        "factory_output": 0.05
+      }
+    },
+    {
+      "id": "war_economy",
+      "name": "战争经济",
+      "desc": "整个国民经济转入战时轨道。数字很好看，代价是没有人再记得正常的生活是什么样。",
+      "icon": "🏗",
+      "modifiers": {
+        "factory_output": 0.22,
+        "political_power_gain": -0.20
+      }
+    },
+    {
+      "id": "military_priority",
+      "name": "军工优先",
+      "desc": "最好的钢、最好的工人、最好的工程师，全部送进兵工厂。民用部门只能捡剩下的。",
+      "icon": "🔩",
+      "modifiers": {
+        "war_support_drift": 0.30,
+        "manpower_gain": -0.25,
+        "stability_drift": -0.20
+      }
+    },
+    {
+      "id": "total_war",
+      "name": "总体战",
+      "desc": "国家不再有后方。每一个工厂、每一个家庭、每一分钟都属于战争。",
+      "icon": "🔥",
+      "modifiers": {
+        "factory_output": 0.25,
+        "stability_drift": -0.60,
+        "manpower_gain": -0.40
+      }
+    },
+
+    {
+      "id": "army_reform",
+      "name": "陆军改革",
+      "desc": "新的编制、新的条令、新的军官。旧贵族让位给会看地图的人。",
+      "icon": "⚔",
+      "modifiers": {
+        "manpower_gain": 0.15,
+        "war_support_drift": 0.10
+      }
+    },
+    {
+      "id": "blitz_doctrine",
+      "name": "闪击战条令",
+      "desc": "全军按同一套逻辑思考：找到弱点，集中突破，不要停。",
+      "icon": "📜",
+      "modifiers": {
+        "focus_speed": 0.10,
+        "stability_drift": -0.05
+      }
+    },
+    {
+      "id": "navy_z_plan",
+      "name": "Z 计划",
+      "desc": "十年造舰计划。钢铁和熟练工被大量抽走，陆军看不惯这种浪费。",
+      "icon": "⚓",
+      "modifiers": {
+        "political_power_gain": -0.15,
+        "war_support_drift": 0.05
+      }
+    },
+
+    {
+      "id": "GER_westwall",
+      "name": "西墙",
+      "desc": "从瑞士边境到卢森堡，一条由混凝土和地雷组成的线。它让士兵安心，也让将领懒惰。",
+      "icon": "🧱",
+      "modifiers": {
+        "war_support_drift": 0.15,
+        "stability_drift": -0.10
+      }
+    },
+    {
+      "id": "GER_shadow_staff",
+      "name": "影子总参谋部",
+      "desc": "一份不存在于任何正式文件里的指挥体系。它很有效，也很危险。",
+      "icon": "🕯",
+      "modifiers": {
+        "focus_speed": 0.15,
+        "stability_drift": -0.15
+      }
+    }
+  ]
+}

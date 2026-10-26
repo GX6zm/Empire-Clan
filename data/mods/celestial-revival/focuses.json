@@ -1,0 +1,240 @@
+{
+  "type": "focuses",
+  "defs": [
+    {
+      "id": "CHN_root", "tag": "CHN",
+      "name": "统一财政",
+      "desc": "关税、盐税、田赋终于进了同一个账本。一个国家要打仗，先得知道自己的钱在哪。",
+      "icon": "🏦",
+      "x": 3, "y": 0,
+      "cost": 35,
+      "effects": [
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 20 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 5 } },
+        { "op": "add_idea", "id": "unified_finance" },
+        { "op": "log", "text": "财政统一，中央第一次摸清了家底" }
+      ],
+      "ai_weight": 20
+    },
+
+    {
+      "id": "CHN_army", "tag": "CHN",
+      "name": "整编陆军",
+      "desc": "把各省的私兵编进同一个序列。这件事在纸面上是编制问题，在现实里是权力问题。",
+      "icon": "⚔",
+      "x": 1, "y": 1,
+      "cost": 50,
+      "prereqs": ["CHN_root"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 10 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -3 } }
+      ],
+      "ai_weight": 12
+    },
+    {
+      "id": "CHN_defense", "tag": "CHN",
+      "name": "沿海布防",
+      "desc": "从吴淞口到珠江口，炮台一座接一座。守得住海岸，守不住人心。",
+      "icon": "🛡",
+      "x": 0, "y": 2,
+      "cost": 55,
+      "prereqs": ["CHN_army"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 6 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 1 } },
+        { "op": "add_idea", "id": "coastal_fort" }
+      ],
+      "ai_weight": 9
+    },
+    {
+      "id": "CHN_mobile", "tag": "CHN",
+      "name": "机械化纵队",
+      "desc": "用卡车和装甲车把精锐集中起来，专打敌人的侧翼。这需要钱，而钱一直是最缺的东西。",
+      "icon": "🚚",
+      "x": 1, "y": 3,
+      "cost": 60,
+      "pp_cost": 50,
+      "prereqs": ["CHN_army"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 1 } },
+        { "op": "add_idea", "id": "mobile_column" }
+      ],
+      "ai_weight": 9
+    },
+
+    {
+      "id": "CHN_industry", "tag": "CHN",
+      "name": "实业计划",
+      "desc": "铁路、港口、电厂、水泥厂。国家要先能造东西，才谈得上造枪。",
+      "icon": "🏭",
+      "x": 3, "y": 1,
+      "cost": 50,
+      "prereqs": ["CHN_root"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 3 } },
+        { "op": "add_idea", "id": "state_industry" }
+      ],
+      "ai_weight": 14
+    },
+    {
+      "id": "CHN_heavy", "tag": "CHN",
+      "name": "重工业基地",
+      "desc": "把钢厂和兵工厂塞进内陆的山里。搬迁成本高得离谱，但至少敌人炸不到。",
+      "icon": "⛰",
+      "x": 2, "y": 2,
+      "cost": 60,
+      "pp_cost": 40,
+      "prereqs": ["CHN_industry"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 4 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -4 } }
+      ],
+      "ai_weight": 11
+    },
+    {
+      "id": "CHN_rail", "tag": "CHN",
+      "name": "铁路网",
+      "desc": "把沿海和内地在时间上拉近。运兵、运煤、运粮，都靠它。",
+      "icon": "🚂",
+      "x": 4, "y": 2,
+      "cost": 55,
+      "prereqs": ["CHN_industry"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 4 } }
+      ],
+      "ai_weight": 11
+    },
+    {
+      "id": "CHN_arsenal", "tag": "CHN",
+      "name": "兵工署",
+      "desc": "统一口径、统一图纸、统一验收标准。这听起来很无聊，但它决定了前线能不能补上弹药。",
+      "icon": "🔩",
+      "x": 3, "y": 3,
+      "cost": 65,
+      "prereqs_any": ["CHN_heavy", "CHN_rail"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 3 } },
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 8 } }
+      ],
+      "ai_weight": 12
+    },
+
+    {
+      "id": "CHN_unity", "tag": "CHN",
+      "name": "统一战线",
+      "desc": "把所有还在观望的力量拉进同一条战线。代价是你必须和昨天还在打仗的人握手。",
+      "icon": "🤝",
+      "x": 5, "y": 1,
+      "cost": 50,
+      "prereqs": ["CHN_root"],
+      "effects": [
+        { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 25 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 6 } }
+      ],
+      "ai_weight": 10
+    },
+    {
+      "id": "CHN_reform", "tag": "CHN",
+      "name": "土地改革",
+      "desc": "把地租降下来。农民第一次觉得这个国家跟自己有关——工业也因此少了些廉价劳动力。",
+      "icon": "🌾",
+      "x": 5, "y": 2,
+      "cost": 60,
+      "prereqs": ["CHN_unity"],
+      "effects": [
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": 5 } },
+        { "op": "add_idea", "id": "rural_reform" }
+      ],
+      "ai_weight": 9
+    },
+
+    {
+      "id": "CHN_total", "tag": "CHN",
+      "name": "工业总动员",
+      "desc": "所有工厂三班倒，所有学校改上课时短训班。国家变成一台机器——机器不会问为什么。",
+      "icon": "🔥",
+      "x": 3, "y": 4,
+      "cost": 80,
+      "prereqs": ["CHN_arsenal"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 5 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -6 } },
+        { "op": "add_idea", "id": "total_mobilization" }
+      ],
+      "ai_weight": 10
+    },
+    {
+      "id": "CHN_resist", "tag": "CHN",
+      "name": "决死抗战",
+      "desc": "退无可退。从这一天起，这场战争不再有前线和后方的区别。",
+      "icon": "⚔",
+      "x": 3, "y": 5,
+      "cost": 70,
+      "prereqs": ["CHN_total"],
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 15 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -5 } },
+        { "op": "declare_war", "tag": "JPN" },
+        { "op": "log", "text": "全面抗战爆发" }
+      ],
+      "ai_weight": 6
+    },
+
+    {
+      "id": "JPN_root", "tag": "JPN",
+      "name": "军部主导",
+      "desc": "内阁换了一届又一届，真正做决定的始终是那间会议室。",
+      "icon": "⚔",
+      "x": 1, "y": 0,
+      "cost": 30,
+      "effects": [
+        { "op": "add", "target": "country.war_support", "value": { "op": "num", "value": 8 } },
+        { "op": "add_idea", "id": "jpn_army_dominance" }
+      ],
+      "ai_weight": 20
+    },
+    {
+      "id": "JPN_expand", "tag": "JPN",
+      "name": "大陆政策",
+      "desc": "把朝鲜当作跳板，把满洲当作资源库。地图上画的线，迟早要用士兵去填。",
+      "icon": "🗺",
+      "x": 0, "y": 1,
+      "cost": 50,
+      "prereqs": ["JPN_root"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 2 } },
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 2 } }
+      ],
+      "ai_weight": 12
+    },
+
+    {
+      "id": "SOV_root", "tag": "SOV",
+      "name": "五年计划",
+      "desc": "钢铁、煤炭、拖拉机厂。把一个农业国硬生生拽进工业时代。",
+      "icon": "🏭",
+      "x": 1, "y": 0,
+      "cost": 30,
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 3 } }
+      ],
+      "ai_weight": 20
+    },
+    {
+      "id": "SOV_fareast", "tag": "SOV",
+      "name": "远东筑垒",
+      "desc": "在西伯利亚冻土上修要塞。昂贵、缓慢，但那边确实安静了下来。",
+      "icon": "🧱",
+      "x": 2, "y": 1,
+      "cost": 50,
+      "prereqs": ["SOV_root"],
+      "effects": [
+        { "op": "add", "target": "country.divisions", "value": { "op": "num", "value": 2 } },
+        { "op": "add_idea", "id": "sov_far_east" }
+      ],
+      "ai_weight": 12
+    }
+  ]
+}

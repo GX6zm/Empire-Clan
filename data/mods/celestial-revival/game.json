@@ -1,0 +1,64 @@
+{
+  "type": "game",
+  "config": {
+    "name": "神州复兴",
+    "version": "1.0.0",
+    "startDate": { "year": 1936, "month": 1, "day": 1 },
+    "playerTag": "CHN",
+    "speeds": [0, 900, 420, 200, 80, 30],
+    "countries": [
+      {
+        "tag": "CHN",
+        "name": "中华民国",
+        "color": "#b08a4f",
+        "stats": {
+          "political_power": 15,
+          "stability": 45,
+          "war_support": 30,
+          "factories": 6,
+          "manpower": 80,
+          "divisions": 6
+        }
+      },
+      {
+        "tag": "JPN",
+        "name": "大日本帝国",
+        "color": "#8a4a4a",
+        "stats": {
+          "political_power": 25,
+          "stability": 60,
+          "war_support": 40,
+          "factories": 9,
+          "manpower": 45,
+          "divisions": 7
+        }
+      },
+      {
+        "tag": "SOV",
+        "name": "苏维埃联盟",
+        "color": "#a8504a",
+        "stats": {
+          "political_power": 20,
+          "stability": 40,
+          "war_support": 20,
+          "factories": 10,
+          "manpower": 60,
+          "divisions": 8
+        }
+      },
+      {
+        "tag": "FRA",
+        "name": "法属印度支那",
+        "color": "#5b7fa6",
+        "stats": {
+          "political_power": 10,
+          "stability": 55,
+          "war_support": 10,
+          "factories": 3,
+          "manpower": 20,
+          "divisions": 2
+        }
+      }
+    ]
+  }
+}

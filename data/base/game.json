@@ -1,0 +1,120 @@
+{
+  "type": "game",
+  "config": {
+    "name": "国策 · Focus Engine",
+    "version": "0.1.0",
+    "startDate": { "year": 1936, "month": 1, "day": 1 },
+    "playerTag": "GER",
+    "speeds": [0, 900, 420, 200, 80, 30],
+    "countries": [
+      {
+        "tag": "GER",
+        "name": "德意志国",
+        "color": "#8a7a5a",
+        "stats": {
+          "political_power": 20,
+          "stability": 55,
+          "war_support": 25,
+          "factories": 8,
+          "manpower": 40
+        }
+      },
+      {
+        "tag": "FRA",
+        "name": "法兰西共和国",
+        "color": "#5b7fa6",
+        "stats": {
+          "political_power": 15,
+          "stability": 45,
+          "war_support": 15,
+          "factories": 6,
+          "manpower": 35
+        }
+      },
+      {
+        "tag": "SOV",
+        "name": "苏维埃联盟",
+        "color": "#a8504a",
+        "stats": {
+          "political_power": 25,
+          "stability": 40,
+          "war_support": 20,
+          "factories": 10,
+          "manpower": 60
+        }
+      },
+      {
+        "tag": "ENG",
+        "name": "联合王国",
+        "color": "#8a6a5a",
+        "stats": {
+          "political_power": 20,
+          "stability": 60,
+          "war_support": 15,
+          "factories": 9,
+          "manpower": 30
+        }
+      },
+      {
+        "tag": "ITA",
+        "name": "意大利王国",
+        "color": "#6f8a6a",
+        "stats": {
+          "political_power": 15,
+          "stability": 45,
+          "war_support": 25,
+          "factories": 5,
+          "manpower": 30
+        }
+      },
+      {
+        "tag": "POL",
+        "name": "波兰共和国",
+        "color": "#7f6f8a",
+        "stats": {
+          "political_power": 10,
+          "stability": 50,
+          "war_support": 20,
+          "factories": 4,
+          "manpower": 30
+        }
+      },
+      {
+        "tag": "SPA",
+        "name": "西班牙共和国",
+        "color": "#a08a4a",
+        "stats": {
+          "political_power": 10,
+          "stability": 35,
+          "war_support": 15,
+          "factories": 4,
+          "manpower": 25
+        }
+      },
+      {
+        "tag": "SWE",
+        "name": "瑞典王国",
+        "color": "#5a7a8a",
+        "stats": {
+          "political_power": 12,
+          "stability": 65,
+          "war_support": 10,
+          "factories": 4,
+          "manpower": 20
+        }
+      },
+      {
+        "tag": "YUG",
+        "name": "南斯拉夫王国",
+        "color": "#7a5a62",
+        "stats": {
+          "political_power": 10,
+          "stability": 40,
+          "war_support": 20,
+          "factories": 3,
+          "manpower": 25
+        }
+      }
+    ]
+  }
+}

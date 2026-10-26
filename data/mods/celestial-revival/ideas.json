@@ -1,0 +1,87 @@
+{
+  "type": "ideas",
+  "defs": [
+    {
+      "id": "unified_finance",
+      "name": "统一财政",
+      "desc": "关税、盐税、田赋终于进了同一个账本。国家第一次知道自己的钱去哪了。",
+      "icon": "🏦",
+      "modifiers": {
+        "political_power_gain": 0.15,
+        "stability_drift": 0.10
+      }
+    },
+    {
+      "id": "state_industry",
+      "name": "国营工业",
+      "desc": "国家直接办厂。效率不高，但方向由中央说了算。",
+      "icon": "🏭",
+      "modifiers": {
+        "factory_output": 0.20,
+        "political_power_gain": -0.15
+      }
+    },
+    {
+      "id": "coastal_fort",
+      "name": "沿海布防",
+      "desc": "从吴淞口到珠江口，炮台一座接一座。守得住海岸，守不住人心。",
+      "icon": "🛡",
+      "modifiers": {
+        "war_support_drift": 0.10,
+        "stability_drift": 0.05
+      }
+    },
+    {
+      "id": "mobile_column",
+      "name": "机械化纵队",
+      "desc": "用卡车和装甲车把精锐集中起来，专门打敌人的侧翼。",
+      "icon": "🚚",
+      "modifiers": {
+        "army_strength": 0.25,
+        "manpower_gain": -0.15
+      }
+    },
+    {
+      "id": "rural_reform",
+      "name": "土地改革",
+      "desc": "把地租降下来。农民第一次觉得这个国家跟自己有关——工业也因此少了些廉价劳动力。",
+      "icon": "🌾",
+      "modifiers": {
+        "stability_drift": 0.35,
+        "political_power_gain": 0.20,
+        "factory_output": -0.10
+      }
+    },
+    {
+      "id": "total_mobilization",
+      "name": "工业总动员",
+      "desc": "所有工厂三班倒，所有学校改上课时短训班。国家变成一台机器。",
+      "icon": "🔥",
+      "modifiers": {
+        "factory_output": 0.30,
+        "stability_drift": -0.50,
+        "manpower_gain": -0.30
+      }
+    },
+    {
+      "id": "jpn_army_dominance",
+      "name": "军部主导",
+      "desc": "内阁换了一届又一届，真正做决定的始终是那间会议室。",
+      "icon": "⚔",
+      "modifiers": {
+        "army_strength": 0.15,
+        "political_power_gain": -0.10
+      }
+    },
+    {
+      "id": "sov_far_east",
+      "name": "远东筑垒",
+      "desc": "在西伯利亚冻土上修要塞。昂贵、缓慢，但那边确实安静了下来。",
+      "icon": "🧱",
+      "modifiers": {
+        "army_strength": 0.10,
+        "stability_drift": 0.10
+      }
+    }
+  ]
+}

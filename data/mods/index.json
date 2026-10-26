@@ -1,0 +1,7 @@
+{
+  "mods": [
+    { "id": "imperial-twilight", "default": true },
+    { "id": "hard-mode", "default": false },
+    { "id": "celestial-revival", "default": false }
+  ]
+}

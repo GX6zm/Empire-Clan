@@ -1,0 +1,9 @@
+{
+  "id": "hard-mode",
+  "name": "铁血模式",
+  "version": "1.0.0",
+  "author": "示例作者",
+  "description": "演示覆盖机制：整个替换「自给自足」国策的定义（成本更高、代价更大）。默认关闭。",
+  "gameVersion": ">=0.1.0",
+  "files": ["focuses.json"]
+}

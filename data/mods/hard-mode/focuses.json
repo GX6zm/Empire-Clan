@@ -1,0 +1,40 @@
+{
+  "type": "focuses",
+  "defs": [
+    {
+      "id": "GER_eco_autarky",
+      "tag": "GER",
+      "name": "原料自给（铁血）",
+      "desc": "这个 mod 用「同 id 覆盖」整体替换了基础版本的定义。代价更高，收益也更硬——注意它必须把 x / y / prereqs / 互斥关系一起重写。",
+      "icon": "🧱",
+      "x": 3, "y": 2,
+      "cost": 90,
+      "prereqs": ["GER_eco_plan"],
+      "mutually_exclusive": ["GER_eco_trade"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 6 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -10 } },
+        { "op": "add_idea", "id": "autarky" },
+        { "op": "log", "text": "铁血模式：全国进入全面配给制" }
+      ],
+      "ai_weight": 15
+    },
+    {
+      "id": "GER_eco_war",
+      "tag": "GER",
+      "name": "战争经济（铁血）",
+      "desc": "代价更高的战争经济。但工厂就是胜利。",
+      "icon": "🏗",
+      "x": 4, "y": 5,
+      "cost": 95,
+      "prereqs_any": ["GER_eco_synrubber", "GER_eco_market"],
+      "effects": [
+        { "op": "add", "target": "country.factories", "value": { "op": "num", "value": 7 } },
+        { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -12 } },
+        { "op": "add", "target": "country.manpower", "value": { "op": "num", "value": -10 } },
+        { "op": "add_idea", "id": "war_economy" }
+      ],
+      "ai_weight": 12
+    }
+  ]
+}

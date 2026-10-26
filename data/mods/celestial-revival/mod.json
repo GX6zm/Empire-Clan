@@ -1,0 +1,16 @@
+{
+  "id": "celestial-revival",
+  "name": "神州复兴",
+  "version": "1.0.0",
+  "author": "示例作者",
+  "description": "完全替换型模组：自带地图、国家、国策树、国家精神与事件。启用后整个游戏从 1936 年的德意志换成 1936 年的东亚——你不写一行代码，换的是一个国家。",
+  "gameVersion": ">=0.1.0",
+  "replacesBase": true,
+  "files": [
+    "game.json",
+    "ideas.json",
+    "map.json",
+    "focuses.json",
+    "events.json"
+  ]
+}

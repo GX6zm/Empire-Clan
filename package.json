@@ -1,0 +1,11 @@
+{
+  "name": "focus-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "轻量级国策树策略游戏骨架（零依赖）",
+  "scripts": {
+    "start": "python serve.py",
+    "test": "node tests/run.mjs"
+  }
+}

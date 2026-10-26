@@ -1,0 +1,38 @@
+{
+  "type": "patch",
+  "ops": [
+    {
+      "action": "modify",
+      "collection": "focuses",
+      "id": "GER_root",
+      "set": { "cost": 20 }
+    },
+    {
+      "action": "modify",
+      "collection": "focuses",
+      "id": "GER_eco_war",
+      "set": { "cost": 60, "name": "战争经济（加速）" }
+    },
+    {
+      "action": "add",
+      "collection": "focuses",
+      "value": {
+        "id": "GER_shadow",
+        "tag": "GER",
+        "name": "影子总参谋部",
+        "desc": "在正式编制之外，另有一套指挥体系在运转。它不存在于任何一份公开文件里。",
+        "icon": "🕯",
+        "x": 0, "y": 1,
+        "cost": 40,
+        "prereqs": ["GER_root"],
+        "effects": [
+          { "op": "add", "target": "country.political_power", "value": { "op": "num", "value": 15 } },
+          { "op": "add", "target": "country.stability", "value": { "op": "num", "value": -2 } },
+          { "op": "add_idea", "id": "GER_shadow_staff" },
+          { "op": "fire_event", "id": "ev_shadow" }
+        ],
+        "ai_weight": 6
+      }
+    }
+  ]
+}
