@@ -88,6 +88,11 @@ node tools/contrast-check.mjs
 
 ## 运行
 
+**在线版**：<https://gx6zm.github.io/Empire-Clan/>
+（GitHub Pages 直接托管静态文件，不需要任何构建步骤）
+
+本地跑：
+
 ```bash
 cd focus-engine
 python serve.py
